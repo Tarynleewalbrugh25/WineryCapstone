@@ -60,8 +60,8 @@ class Users{
     }
     
     deleteUser(req, res) {
-        const prodID = req.params.id;
-        if (!prodID) {
+        const userID = req.params.id;
+        if (!userID) {
             return res.status(400).json({ msg: 'User ID is required' });
         }
         const qry = `
