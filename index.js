@@ -34,7 +34,7 @@ app.get('^/$|/BellaItalia', (req, res) => {
 // app.use('/^')
 // app.use('^/$')
 app.use('/users', userRouter)
-app.use('/stocks', productRouter)
+app.use('/products', productRouter)
 app.use(errorHandling)
 app.listen(port, ()=>{
     console.log(`Server is running on port ${port}`);
