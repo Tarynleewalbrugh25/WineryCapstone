@@ -7,7 +7,7 @@ const productRouter = express.Router()
 //fetch all items
 productRouter.get('/', (req, res)=>{
     try{
-        stocks.fetchProducts(req, res)
+        products.fetchProducts(req, res)
     }catch(e){
         res.json({
             status: res.statusCode,
@@ -17,7 +17,7 @@ productRouter.get('/', (req, res)=>{
 })
 productRouter.get('/:id', (req, res) => {
     try {
-        stocks.fetchProducts(req, res); // Call fetchStock function to retrieve a single stock
+        products.fetchProducts(req, res); // Call fetchStock function to retrieve a single stock
     } catch (e) {
         console.error("Error fetching product:", e);
         res.status(500).json({
@@ -28,7 +28,7 @@ productRouter.get('/:id', (req, res) => {
 });
 productRouter.post('/add',bodyParser.json(),(req, res)=>{
     try{
-        stocks.addProduct(req, res)
+        products.addProduct(req, res)
     }catch(e){
         res.json({
             status: res.statusCode,
@@ -39,7 +39,7 @@ productRouter.post('/add',bodyParser.json(),(req, res)=>{
 
 productRouter.delete('/product/:id', (req, res) => {
     try {
-        stocks.deleteProduct(req, res);
+        products.deleteProduct(req, res);
     } catch (e) {
         console.error('Error deleting product:', e);
         res.status(500).json({
@@ -51,7 +51,7 @@ productRouter.delete('/product/:id', (req, res) => {
 
 productRouter.patch('/product/:id', bodyParser.json(), (req, res)=>{
     try{
-        stocks.updateProduct(req, res)
+        products.updateProduct(req, res)
     }catch(e){
         res.json({
             status: res.statusCode,
