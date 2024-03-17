@@ -30,33 +30,33 @@ class Users{
         })
     }
     async createUser(req, res) {
-        //payload
+        // Payload
         let data = req.body
-        data.userPwd = await hash(data?.userPwd,10)
-        let user ={
+        data.userPwd = await hash(data?.userPwd, 8)
+        let user = {
             emailAdd: data.emailAdd,
             userPwd: data.userPwd
         }
         const qry = `
         INSERT INTO Users
         SET ?;
-        `
-        db.query(qry,[data], (err)=>{
-            if(err){
+        `     
+        db.query(qry, [data], (err)=>{
+            if(err) {
                 res.json({
                     status: res.statusCode,
-                    msg: 'Please use another email address'
+                    msg: 'This email address already exist'
                 })
             }else {
-                //create a token 
+                // Create a token
                 let token = createToken(user)
                 res.json({
                     status: res.statusCode,
                     token,
-                    msg: 'You\re registered'
+                    msg: 'You\'re registered'
                 })
             }
-        })
+        })   
     }
     
     deleteUser(req, res) {
