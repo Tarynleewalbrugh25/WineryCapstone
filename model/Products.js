@@ -2,7 +2,7 @@ import { Connection as db } from "../config/index.js";
 class Products {
     fetchProducts(req, res) {
         const qry = `
-            SELECT prodID,prodName,prodAmount, prodQuanity, prodCat,prodBrand,ProdSupp,prodURL
+            SELECT prodID,prodName,prodAmount, prodQuanity, prodCat,prodBrand,prodURL
             FROM Products;
         `;
         db.query(qry, (err, results) => {
@@ -15,7 +15,7 @@ class Products {
     }
     fetchProduct(req, res) {
         const qry = `
-           SELECT prodID,prodName,prodAmount, prodQuanity, prodCat,prodBrand,ProdSupp,prodURL
+           SELECT prodID,prodName,prodAmount, prodQuanity, prodCat, prodBrand, prodURL
            FROM Products;
            WHERE itemID = ?;
         `;
