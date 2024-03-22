@@ -1,7 +1,7 @@
 import { createStore } from "vuex";
 import axios from "axios";
 import sweet from "sweetalert";
-const tnURL = "https://wineinventorycapstone-1.onrender.com/";
+const tnURL = "https://winerycapstone.onrender.com/";
 
 export default createStore({
   state: {
@@ -106,57 +106,34 @@ export default createStore({
         })
       }
     },
-    async addUser(context, info) {
-      try {
-        console.log(info);
-        const { msg } = await (
-          await axios.add(`${tnURL}users/signup/${info.userID}`)
-        ).data;
-        context.dispatch("fetchUsers");
-        sweet({
-          title: "Delete user",
-          text: msg,
-          icon: "success",
-          timer: 2000,
-        });
-      } catch (e) {
-        sweet({
-          title: "Error",
-          text: "An error occurred when deleting a user.",
-          icon: "error",
-          timer: 2000,
-        });
-      }
-    },
+    
     async register(context,payload){
       try{
         let{msg}=(await axios.post(`${tnURL}users/signup`,payload))
         if(msg){
           context.dispatch('setUser')
-          // sweet({
-          //   title:'Registration',
-          //   text:msg,
-          //   icon:"success",
-          //   timer:2000
-          // })
+          sweet({
+            title:'Registration',
+            text:msg,
+            icon:"success",
+            timer:2000
+          })
     
         }
       }catch(e){
-        // sweet(
-        //   {
-        //     title:'Error',
-        //     text:'Please try again later',
-        //     icon:"error",
-        //     timer:2000
-        //   }
-        // )
+        sweet(
+          {
+            title:'Error',
+            text:'Please try again later',
+            icon:"error",
+            timer:2000
+          }
+        )
       }
-    },
-
-    
+    },    
     async fetchProducts(context) {
       try {
-        let { results } = (await axios.get(`${tnURL}stocks`)).data;
+        let { results } = (await axios.get(`${tnURL}products`)).data;
         if (results) {
           context.commit("setProducts", results);
         }
@@ -171,7 +148,7 @@ export default createStore({
     },
     async fetchProduct(context, info) {
       try {
-        let { result } = (await axios.get(`${tnURL}stocks/${info.id}`)).data;
+        let { result } = (await axios.get(`${tnURL}products/${info.id}`)).data;
         if (result) {
           context.commit("setProduct", result);
         } else {
@@ -191,112 +168,54 @@ export default createStore({
         });
       }
     },
-  },
-  async deleteProduct(context, info) {
-    try {
-      console.log(info);
-      const { msg } = await (
-        await axios.delete(`${tnURL}stocks/Stocks/${info.itemID}`)
-      ).data;
-      context.dispatch('fetchProducts');
+  
+  async deleteProduct({commit,dispatch},payload){
+    try{
+  await axios.delete(`${tnURL}products/product/${payload.id}`)
+  commit('setProducts');
+  dispatch('fetchProducts');
+  sweet({
+    title:'Product Deleted',
+    icon:'success',
+    timer:2000
+  })
+    }
+  
+    catch(error){
       sweet({
-        title: 'Delete product',
-        text: msg,
-        icon: "success",
-        timer: 2000
-      });
-    } catch (e) {
-      sweet({
-        title: 'Error',
-        text: 'An error occurred when deleting a product.',
-        icon: "error",
-        timer: 2000
-      });
+        title:'Error',
+        text:'An error occurred when deleting a product',
+        icon:'error',
+        timer:2000
+      })
     }
   },
-  // async deleteProduct(context, info) {
-  //   try {
-  //     const { msg } = await (
-  //       await axios.delete(`${tnURL}products/product/${info.prodID}`)
-  //     ).data;
-  //     context.dispatch("fetchProducts");
-  //     sweet({
-  //       title: "Delete product",
-  //       text: msg,
-  //       icon: "success",
-  //       timer: 2000,
-  //     });
-  //   } catch (e) {
-  //     sweet({
-  //       title: "Error",
-  //       text: "An error occurred when deleting a product.",
-  //       icon: "error",
-  //       timer: 2000,
-  //     });
-  //   }
-  // },
-
-  // async addProduct(context, info) {
-  //   try {
-  //     let { msg } = await axios.post(`${tnURL}stocks/addStocks`, info);
-  //     const product = {
-  //       itemName: this.name,
-  //       Brand: this.brand,
-  //       itemYear: this.year,
-  //       Price: this.price,
-  //       Categories: this.categories,
-  //       itemUrl: this.pic}
-
-  //     context.dispatch("setProducts");
-  //     sweet({
-  //       title: "Registration",
-  //       text: msg,
-  //       icon: "success",
-  //       timer: 2000,
-  //     });
-  //   } catch (e) {
-  //     sweet({
-  //       title: "Error",
-  //       text: "Please try again later",
-  //       icon: "error",
-  //       timer: 2000,
-  //     });
-  //   }
-  // },
-    async addProduct() {
-      try {
-        const product = {
-          itemName: this.name,
-          Brand: this.brand,
-          itemYear: this.year,
-          Price: this.price,
-          Categories: this.categories,
-          itemUrl: this.pic
-        };
-
-       
-        const response = await axios.post(`${tnURL}stocks/addStocks`, product);
-
-
-        console.log(response.data); 
-
-      
-        this.name = '';
-        this.brand = '';
-        this.year = '';
-        this.price = '';
-        this.categories = '';
-        this.pic = '';
-
-    
-      } catch (error) {
-        console.error('Failed to add product:', error);
-      
+  async addProduct(context,payload){
+    try{
+      let {msg}=(await axios.post(`${tnURL}products/add`,payload))
+      if(msg){
+        context.dispatch('setProducts')
+        sweet(
+          {
+            title:'Product Added',
+            text:msg,
+            icon:"success",
+            timer:2000
+          }
+        )
       }
-    },
-    async updateProduct(context,{id,data}){
+    }catch(e){
+      sweet({
+        title:'Error',
+        text:'Please try again later',
+        icon:"error",
+        timer:2000
+      })
+    }
+  },
+  async updateProduct(context,{id,data}){
       try{
-        let {update}= await axios.patch(`${tnURL}stocks/Stocks/${id}`,data);
+        let {update}= await axios.patch(`${tnURL}products/product/${id}`,data);
         if(update){
           context.dispatch('setProduct');
           sweet({
@@ -317,5 +236,6 @@ export default createStore({
         console.error('Error updating user:',e)
       }
     },
+  },
   modules: {},
 });

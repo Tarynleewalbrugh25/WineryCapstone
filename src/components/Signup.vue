@@ -1,7 +1,7 @@
 <template>
     <!-- Button trigger modal -->
   <button type="button " class="btn modalButton" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Create User
+    <i class="bi bi-plus-lg"></i>Create User
   </button>
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -21,6 +21,9 @@
           </div>
           <div class="mb-3">
               <input type="text" class="form-control w-50 mx-auto" placeholder="Last Name" v-model="payload.lastName">
+          </div>
+          <div class="mb-3">
+              <input type="text" class="form-control w-50 mx-auto" placeholder="Age" v-model="payload.userAge">
           </div>
           <div class="mb-3">
               <input type="text" class="form-control w-50 mx-auto" placeholder="Gender" v-model="payload.gender">
@@ -54,6 +57,7 @@
               userID: '',
               firstName:'',
               lastName:'',
+              userAge:'',
               userRole:'',
               gender:'',
               emailAdd:'',
@@ -93,24 +97,25 @@
   </script>
   <style scoped>
   .modalButton {
-    position: relative;
-    height: 52px;
-  margin-bottom: 10px;
-  margin-top: 60px;
-  background-color:rgb(39,142,86);
-  color: white;
-  border-radius: 5px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
-  font-size: 16px;
-  font-weight: bold;
-  padding: 0 20px;
-  cursor: pointer;
-  }
-  .modalButton:hover {
-    background-color: rgb(35, 211, 105);
-  color: white;
-  transform: translateY(-2px);
+  position: relative;
+  height: 40px;
+margin-bottom: 10px;
+margin-top: 15px;
+background-color:burlywood;
+color: white;
+border-radius: 5px;
+box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+font-size: 16px;
+font-weight: bold;
+padding: 0 20px;
+cursor: pointer;
+}
+
+.modalButton:hover {
+  background-color: brown;
+color: white;
+transform: translateY(-2px);
 }
   </style>
 

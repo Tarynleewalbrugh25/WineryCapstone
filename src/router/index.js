@@ -2,6 +2,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import SignupComp from '../components/Signup.vue'
 import addProductComp from '../components/AddProduct.vue'
+import ProductDetails from '../components/ProductDetails.vue'
+
+
 
 
 const routes = [
@@ -26,11 +29,6 @@ const routes = [
     component: () => import( '../views/AdminView.vue')
   },
   {
-    path: '/contact',
-    name: 'contact',
-    component: () => import( '../views/ContactView.vue')
-  },
-  {
     path: '/register',
     name: 'SignupComp',
     component: SignupComp
@@ -39,7 +37,14 @@ const routes = [
     path: '/addProducts',
     name: 'AddProductComp',
     component: addProductComp 
-  }
+  },
+  {
+    path: '/product/:id',
+    name: 'ProductDetails',
+    component: ProductDetails,
+    props: true
+  },
+
 ]
 
 

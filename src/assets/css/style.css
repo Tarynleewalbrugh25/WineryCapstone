@@ -1,9 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Bona+Nova:ital,wght@0,400;0,700;1,400&family=Calligraffitti&family=Ephesis&family=Fasthand&family=Love+Light&family=Playfair+Display:wght@400..900&family=Satisfy&family=Sintony&display=swap');
+
 #app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
+      font-family: "Playfair Display", serif;
+      font-optical-sizing: auto;
+      font-weight: 400;
+      font-style: italic;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
-    color: #2c3e50;
+    background-color: #CDBCA5;
+    min-height: 100vh;
   }
   
   nav {
@@ -16,7 +22,15 @@
     top: 0;
     width: 100%;
   }
+
+  nav a.router-link-exact-active  {
+    color: white;
+    border-bottom: white  3px solid;
+    margin-left: auto;
+    
+  }
   
+
   nav a.router-link-exact-active {
     color: #42b983;
   }
@@ -83,13 +97,19 @@
   #footer {
     background-color: #372216;
     font-size: medium;
-    padding: 10px;
-    position: fixed;
-    bottom: 0;
+    padding: 8px;
     width: 100%;
-}
+    margin-top: 20px; /* Adjust the value as needed */
+    text-align: center;
+  }
 .bg-brown {
     background-color: #3F291C;
+}
+
+
+.social-icons .bi {
+  font-size: 1.5rem; /* Set icon size */
+  margin: 0 10px; /* Add margin between icons */
 }
 
 

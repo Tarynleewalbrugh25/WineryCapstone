@@ -1,7 +1,7 @@
 <template>
     <!-- Button trigger modal -->
     <button type="button" class="btn modalButton" data-bs-toggle="modal" data-bs-target="#updateUserModal">
-      Update User
+      <i class="bi bi-pencil"></i>
     </button>
   
     <!-- Modal -->
@@ -96,23 +96,41 @@
   </script>
   
   <style scoped>
-  .modalButton {
-    height: 52px;
-    margin: auto; 
-    margin-bottom: 10px;
-    background-color: rgb(39,142,86);
-    color: white;
-    border-radius: 5px;
+ .modalButton {
+  height: 52px;
+  margin: auto;
+  margin-bottom: 110px; /* Adjust as needed */
+  background-color: burlywood;
+  color: white;
+  border-radius: 5px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
   transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
-  font-size: 16px;
-  font-weight: bold;
   padding: 0 20px;
   cursor: pointer;
-  }
-  .modalButton:hover {
-    background-color: rgb(35, 211, 105);
-  color: white;
-  transform: translateY(-2px);
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: italic;
 }
+  .modalButton:hover {
+  background-color: brown;
+  color:white;
+  transform: translateY(-2px);
+  }
+  @media (max-width: 768px) {
+  .modalButton {
+    height: 40px; /* Reduce button height for smaller screens */
+    font-size: 14px; /* Reduce font size for smaller screens */
+  }
+}
+
+/* Media query for even smaller screens */
+@media (max-width: 576px) {
+  .modalButton {
+    height: 30px; /* Further reduce button height for very small screens */
+    font-size: 12px; /* Further reduce font size for very small screens */
+    padding: 0 10px; /* Adjust padding for smaller screens */
+  }
+}
+
   </style>

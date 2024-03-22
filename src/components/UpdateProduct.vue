@@ -1,7 +1,7 @@
 <template>
     <!-- Button trigger modal -->
     <button type="button" class="btn modalButton" data-bs-toggle="modal" data-bs-target="#updateProductModal">
-      Update Product
+        <i class="bi bi-pencil"></i>
     </button>
     <!-- Modal -->
     <div class="modal fade" id="updateProductModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -14,19 +14,19 @@
           <div class="modal-body">
             <form @submit.prevent="updateProduct">
               <div class="mb-3">
-                <input type="text" class="form-control w-50 mx-auto" required="required" placeholder="Prod ID" v-model="payload.prodID">
+                <input type="text" class="form-control w-50 mx-auto" required="required" placeholder="prod ID" v-model="payload.prodID">
               </div>
               <div class="mb-3">
-                <input type="text" class="form-control w-50 mx-auto" required="required" placeholder="Prod Name" v-model="payload.prodName">
+                <input type="text" class="form-control w-50 mx-auto" required="required" placeholder="prod Name" v-model="payload.prodName">
               </div>
               <div class="mb-3">
-                <input type="text" class="form-control w-50 mx-auto" required="required" placeholder="Prod Image" v-model="payload.prodImg">
+                <input type="text" class="form-control w-50 mx-auto" required="required" placeholder="prod URL" v-model="payload.prodURL">
               </div>
               <div class="mb-3">
-                <input type="text" class="form-control w-50 mx-auto" required="required" placeholder="Prod Category" v-model="payload.prodCat">
+                <input type="text" class="form-control w-50 mx-auto" required="required" placeholder="prod Cat" v-model="payload.prodCat">
               </div>
               <div class="mb-3">
-                <input type="text" class="form-control w-50 mx-auto" required="required" placeholder="Quantity" v-model="payload.prodQuantity">
+                <input type="text" class="form-control w-50 mx-auto" required="required" placeholder="prod Quanity" v-model="payload.prodQuanity">
               </div>
               <div class="mb-3">
                 <input type="text" class="form-control w-50 mx-auto" placeholder="Amount" v-model="payload.prodAmount">
@@ -50,12 +50,12 @@
     data() {
       return {
         payload: {
-          ItemID: '',
-          itemName: '',
-          Brand: '',
-          Categories: '',
-          Price: '',
-          Taste: ''
+          prodID: '',
+          prodName: '',
+          prodURL: '',
+          prodCat: '',
+          prodAmount: '',
+          prodQuanity: ''
         }
       }
     },
@@ -97,7 +97,7 @@
   height: 52px;
     margin: auto;
     margin-bottom: 110px;
-    background-color: rgb(39,142,86);
+    background-color: burlywood;
     color: white;
     border-radius: 5px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
@@ -108,8 +108,24 @@
   cursor: pointer;
   }
   .modalButton:hover {
-  background-color: rgb(35, 211, 105);
+  background-color: brown;
   color:white;
   transform: translateY(-2px);
   }
+  @media (max-width: 768px) {
+  .modalButton {
+    height: 40px; /* Reduce button height for smaller screens */
+    font-size: 14px; /* Reduce font size for smaller screens */
+  }
+}
+
+/* Media query for even smaller screens */
+@media (max-width: 576px) {
+  .modalButton {
+    height: 30px; /* Further reduce button height for very small screens */
+    font-size: 12px; /* Further reduce font size for very small screens */
+    padding: 0 10px; /* Adjust padding for smaller screens */
+  }
+}
+
   </style>
