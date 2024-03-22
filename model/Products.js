@@ -15,7 +15,7 @@ class Products {
     }
     fetchProduct(req, res) {
         const qry = `
-           SELECT prodID,prodName,prodAmount, prodQuanity, prodCat, prodBrand, prodURL
+           SELECT prodID,prodName,prodAmount, prodQuanity, prodCat,prodBrand, prodURL
            FROM Products;
            WHERE itemID = ?;
         `;
@@ -35,8 +35,6 @@ class Products {
             });
         });
     }
-
-
     addProduct(req, res) {
         const qry = `
             INSERT INTO Products

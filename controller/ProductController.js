@@ -37,7 +37,7 @@ productRouter.post('/add', bodyParser.json(),(req, res)=>{
     }
 })
 
-productRouter.delete('/product/:id', (req, res) => {
+productRouter.delete('/product/:id',bodyParser.json(), (req, res) => {
     try {
         products.deleteProduct(req, res);
     } catch (e) {
