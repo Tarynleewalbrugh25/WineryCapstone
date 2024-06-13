@@ -9,6 +9,9 @@
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     background-color: #CDBCA5;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center; 
     min-height: 100vh;
   }
   
