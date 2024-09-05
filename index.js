@@ -29,7 +29,7 @@ app.use(
     cors()
 )
 app.get('^/$|/BellaItalia', (req, res) => {
-    res.status(200).sendFile(path.resolvegit ('./static/index.html'))
+    res.status(200).sendFile(path.resolve('./static/index.html'))
 })
 // app.use('/^')
 // app.use('^/$')
